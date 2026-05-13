@@ -1,0 +1,159 @@
+en:
+  # main menu
+  menu_title: hostsctl
+  add_mapping: "+ Add mapping"
+  manage_ip: Manage IP
+  manage_host: Manage Host
+  switch_lang: Switch Language
+  quit: Quit
+  back: Back
+  cancel: Cancel
+  confirm_btn: Confirm
+
+  # entry detail
+  switch_ip: Switch IP
+  edit_alias: Edit alias
+  hide_mapping: Hide mapping
+  show_mapping: Show mapping
+  remove_mapping: Remove mapping
+  hidden_tag: "  [hidden]"
+
+  # IP management
+  add_ip: Add IP
+  edit: Edit
+  delete: Delete
+
+  # Host management
+  add_host: Add Host
+  rename: Rename
+
+  # selection titles
+  select_host: Select Host
+  select_ip: Select IP
+  switch_ip_for: "Switch IP: {host}"
+
+  # subtitles / info
+  ref_count: "In use: {n} entry(ies)"
+  will_delete_entries: "Will also delete {n} entry(ies)"
+  current_ip: "Current → {ip}"
+  none_value: "(none)"
+
+  # prompts
+  prompt_ip: IP address
+  prompt_ip_keep: "IP address (Enter to keep {current})"
+  prompt_name_optional: "name (optional)"
+  prompt_name_keep: "name (Enter to keep {current})"
+  prompt_hostname: hostname
+  prompt_new_hostname: new hostname
+  prompt_alias_optional: "alias (optional)"
+  prompt_alias_edit: "alias (Enter to clear, current: {current})"
+
+  # notifications
+  ok_updated: "✓  Updated"
+  ok_added_ip: "✓  Added {ip}"
+  ok_added_host: "✓  Added {name}"
+  ok_deleted: "✓  Deleted"
+  ok_removed: "✓  Removed"
+  ok_hidden: "✓  Hidden"
+  ok_shown: "✓  Visible"
+  ok_switched: "✓  Switched to {target}"
+  ok_renamed: "✓  Renamed"
+  ok_mapping_added: "✓  Mapping added"
+  ok_lang_changed: "✓  Language changed"
+
+  # errors
+  err_required: Required
+  err_ip_exists: "{ip} already exists"
+  err_host_exists: "{name} already exists"
+  err_no_hosts_add_first: "No hosts yet. Add one first."
+  err_no_ips_add_first: "No IPs yet. Add one first."
+
+  # confirm dialogs
+  confirm_delete_ip: "Delete {ip}?"
+  confirm_delete_host: "Delete {host}?"
+  confirm_remove_mapping: "Remove mapping for {host}?"
+
+  # key hints
+  key_hint: "↑↓ Navigate  →/Enter Select  ← Back  Ctrl+C Quit"
+  press_any_key: (Press any key to continue)
+  hint_ctrl_c: Use Ctrl+C to cancel
+
+zh:
+  # main menu
+  menu_title: hostsctl
+  add_mapping: ＋ 新增 mapping
+  manage_ip: 管理 IP
+  manage_host: 管理 Host
+  switch_lang: 切換語言
+  quit: 離開
+  back: 回上層
+  cancel: 取消
+  confirm_btn: 確認
+
+  # entry detail
+  switch_ip: 切換 IP
+  edit_alias: 修改 alias
+  hide_mapping: 隱藏 mapping
+  show_mapping: 顯示 mapping
+  remove_mapping: 移除 mapping
+  hidden_tag: "  [隱藏]"
+
+  # IP management
+  add_ip: 新增 IP
+  edit: 修改
+  delete: 刪除
+
+  # Host management
+  add_host: 新增 Host
+  rename: 改名
+
+  # selection titles
+  select_host: 選擇 Host
+  select_ip: 選擇 IP
+  switch_ip_for: "切換 IP：{host}"
+
+  # subtitles / info
+  ref_count: "使用中 entry：{n} 筆"
+  will_delete_entries: "將連帶刪除 {n} 筆 entry"
+  current_ip: "目前 → {ip}"
+  none_value: （無）
+
+  # prompts
+  prompt_ip: IP address
+  prompt_ip_keep: "IP address（Enter 保留 {current}）"
+  prompt_name_optional: name（可留空）
+  prompt_name_keep: "name（Enter 保留 {current}）"
+  prompt_hostname: hostname
+  prompt_new_hostname: 新 hostname
+  prompt_alias_optional: alias（可留空）
+  prompt_alias_edit: "alias（Enter 清空，目前：{current}）"
+
+  # notifications
+  ok_updated: "✓  已更新"
+  ok_added_ip: "✓  已新增 {ip}"
+  ok_added_host: "✓  已新增 {name}"
+  ok_deleted: "✓  已刪除"
+  ok_removed: "✓  已移除"
+  ok_hidden: "✓  已隱藏"
+  ok_shown: "✓  已顯示"
+  ok_switched: "✓  已切換至 {target}"
+  ok_renamed: "✓  已更名"
+  ok_mapping_added: "✓  已新增 mapping"
+  ok_lang_changed: "✓  語言已切換"
+
+  # errors
+  err_required: 不可空白
+  err_ip_exists: "{ip} 已存在"
+  err_host_exists: "{name} 已存在"
+  err_no_hosts_add_first: 尚無 Host，請先新增
+  err_no_ips_add_first: 尚無 IP，請先新增
+
+  # confirm dialogs
+  confirm_delete_ip: "確認刪除 {ip}？"
+  confirm_delete_host: "確認刪除 {host}？"
+  confirm_remove_mapping: "移除 {host} 的 mapping？"
+
+  # key hints
+  key_hint: "↑↓ 移動  →/Enter 確認  ← 返回  Ctrl+C 離開程式"
+  press_any_key: （任意鍵繼續）
+  hint_ctrl_c: 使用 Ctrl+C 跳出
