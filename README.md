@@ -5,6 +5,7 @@
 Interactive TUI for managing `/etc/hosts` mappings. Switch IPs per hostname without manually editing the file.
 
 ![platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux-lightgrey)
+[![codecov](https://codecov.io/gh/davislin77/hostsctl/branch/main/graph/badge.svg)](https://codecov.io/gh/davislin77/hostsctl)
 
 ---
 
