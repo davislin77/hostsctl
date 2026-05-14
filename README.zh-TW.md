@@ -82,6 +82,31 @@ hostsctl 在 `/etc/hosts` 中管理一個專屬區段，其餘內容完全不異
 
 ---
 
+## 測試
+
+若尚未安裝 pytest：
+
+```bash
+pip3 install pytest
+```
+
+執行測試：
+
+```bash
+make test
+```
+
+測試範圍：
+
+| 項目 | 涵蓋方式 |
+|------|----------|
+| `display_width` / `ljust_display` | 單元測試 |
+| `ip_label` / `entry_label` | 單元測試 + 對齊回歸測試 |
+| `load` / `save` | 使用暫存目錄的 round-trip 測試 |
+| `getch` / `menu` / `_write_hosts` | 未測試（依賴 TTY / sudo） |
+
+---
+
 ## License
 
 MIT

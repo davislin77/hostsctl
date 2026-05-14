@@ -81,6 +81,31 @@ Writing to `/etc/hosts` requires `sudo` — you will be prompted on first write.
 
 ---
 
+## Testing
+
+Install pytest if not already available:
+
+```bash
+pip3 install pytest
+```
+
+Run all tests:
+
+```bash
+make test
+```
+
+Test coverage:
+
+| Area | Coverage |
+|------|----------|
+| `display_width` / `ljust_display` | Unit tests |
+| `ip_label` / `entry_label` | Unit + alignment regression |
+| `load` / `save` | Round-trip with temp files |
+| `getch` / `menu` / `_write_hosts` | Not tested (TTY / sudo dependency) |
+
+---
+
 ## License
 
 MIT
