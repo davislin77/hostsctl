@@ -225,24 +225,37 @@ def _next_id(d):
 
 # ── helpers ───────────────────────────────────────────────────────────────────
 
-def ip_label(ip_rec):
+def display_width(s):
+    import unicodedata
+    w = 0
+    for ch in s:
+        w += 2 if unicodedata.east_asian_width(ch) in ('W', 'F') else 1
+    return w
+
+def ljust_display(s, width):
+    pad = max(0, width - display_width(s))
+    return s + ' ' * pad
+
+def ip_label(ip_rec, ip_width=0):
     if not ip_rec:
         return '?'
-    return f'{ip_rec["ip"]}  ({ip_rec["name"]})' if ip_rec.get('name') else ip_rec['ip']
+    ip = ip_rec['ip']
+    ip_str = ljust_display(ip, ip_width) if ip_width else ip
+    return f'{ip_str}  ({ip_rec["name"]})' if ip_rec.get('name') else ip
 
 def entry_label(data, e, alias_width=0, host_width=0, ip_width=0):
     hostname = data['hosts'].get(e['host'], '?')
     ip_rec   = data['ips'].get(e['ip'])
     hidden   = t('hidden_tag') if e.get('hidden') else ''
     if alias_width:
-        prefix = f'[{(e.get("alias") or "").ljust(alias_width)}] '
+        prefix = f'[{ljust_display(e.get("alias") or "", alias_width)}] '
     else:
         prefix = f'[{e["alias"]}] ' if e.get('alias') else ''
-    host_str = hostname.ljust(host_width) if host_width else hostname
+    host_str = ljust_display(hostname, host_width) if host_width else hostname
     if ip_rec:
         addr = ip_rec['ip']
         if ip_rec.get('name'):
-            ip_str = f'{addr.ljust(ip_width) if ip_width else addr}  ({ip_rec["name"]})'
+            ip_str = f'{ljust_display(addr, ip_width) if ip_width else addr}  ({ip_rec["name"]})'
         else:
             ip_str = addr
     else:
@@ -330,7 +343,8 @@ def do_ip(data):
     while True:
         ips   = data['ips']
         ids   = list(ips.keys())
-        items = [ip_label(ips[i]) for i in ids]
+        ip_w  = max((display_width(ips[i]['ip']) for i in ids), default=0) if ids else 0
+        items = [ip_label(ips[i], ip_w) for i in ids]
         if ids:
             items.append(SEP)
         items.append(t('add_ip'))
@@ -482,9 +496,9 @@ def main():
     while True:
         entries   = data['entries']
         n         = len(entries)
-        alias_w  = max((len(e.get('alias') or '') for e in entries), default=0)
-        host_w   = max((len(data['hosts'].get(e['host'], '?')) for e in entries), default=0)
-        ip_w     = max((len((data['ips'].get(e['ip']) or {}).get('ip', '')) for e in entries), default=0)
+        alias_w  = max((display_width(e.get('alias') or '') for e in entries), default=0)
+        host_w   = max((display_width(data['hosts'].get(e['host'], '?')) for e in entries), default=0)
+        ip_w     = max((display_width((data['ips'].get(e['ip']) or {}).get('ip', '')) for e in entries), default=0)
         items    = [entry_label(data, e, alias_w, host_w, ip_w) for e in entries]
         items  += [t('add_mapping'), SEP, t('manage_ip'), t('manage_host'), SEP, t('switch_lang')]
         r = menu(t('menu_title'), items, back=t('quit'))
