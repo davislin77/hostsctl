@@ -14,7 +14,7 @@ MARKER_BEGIN = '# --- BEGIN hostsctl ---'
 MARKER_END   = '# --- END hostsctl ---'
 
 # ── ANSI ──────────────────────────────────────────────────────────────────────
-BOLD = '\033[1m'; DIM = '\033[2m'; INV = '\033[7m'; RST = '\033[0m'
+BOLD = '\033[1m'; DIM = '\033[2m'; INV = '\033[7m'; CYAN = '\033[36m'; RST = '\033[0m'
 CLS  = '\033[2J\033[H'
 
 UP, DOWN, RIGHT, LEFT, ENTER, ESC = 'UP', 'DOWN', 'RIGHT', 'LEFT', 'ENTER', 'ESC'
@@ -300,10 +300,12 @@ def _entry_switch_ip(data, e):
         notify(t('err_no_ips_add_first'))
         return
     ids      = list(ips.keys())
+    ip_w     = max((display_width(ips[i]['ip']) for i in ids), default=0)
     hostname = data['hosts'].get(e['host'], '?')
+    cur_ip   = f'{RST}{CYAN}{ip_label(ips.get(e["ip"]))}{RST}'
     r = menu(t('switch_ip_for', host=hostname),
-             [ip_label(ips[i]) for i in ids],
-             subtitle=t('current_ip', ip=ip_label(ips.get(e['ip']))))
+             [ip_label(ips[i], ip_w) for i in ids],
+             subtitle=t('current_ip', ip=cur_ip))
     if r is None:
         return
     e['ip'] = ids[r[0]]
@@ -325,7 +327,8 @@ def _entry_add(data):
     host_id = host_ids[r[0]]
 
     ip_ids = list(data['ips'].keys())
-    r = menu(t('select_ip'), [ip_label(data['ips'][i]) for i in ip_ids], back=t('cancel'))
+    ip_w   = max((display_width(data['ips'][i]['ip']) for i in ip_ids), default=0)
+    r = menu(t('select_ip'), [ip_label(data['ips'][i], ip_w) for i in ip_ids], back=t('cancel'))
     if r is None:
         return
     ip_id = ip_ids[r[0]]
