@@ -51,7 +51,7 @@ def test_ip_label_alignment():
 @pytest.fixture
 def data():
     return {
-        'hosts': {1: 'test.owlting.com', 2: 'api-test.owlting.com'},
+        'hosts': {1: 'hello-world.test', 2: 'api.hello-world.test'},
         'ips': {
             1: {'ip': '127.0.0.1',    'name': '本機'},
             2: {'ip': '192.168.12.34', 'name': '將斗雲端'},
